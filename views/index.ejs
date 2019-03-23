@@ -1,0 +1,105 @@
+<% include partials/header %>
+<section class="hero is-primary has-text-centered">
+  <div class="hero-body">
+    <div class="container">
+    <span class="icon">
+    <i class="fas fa-3x fa-hamburger"></i>
+</span>
+      <h1 class="title">
+      Eat-Da-Burger-Time!
+      </h1>
+      <h2 class="subtitle">
+        Gotta eat them all!
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class = "section ">
+<div class = "columns is-mobile">
+<div class = "column">
+
+<ul class = "is-pulled-right">
+<% for (var i = 0; i < burger.length; i++){%>
+<% if (burger[i].Devoured === false){%>
+<li>
+
+<%= burger[i].burger_name%> 
+</li>
+<%}%>
+<%}%>
+</ul>
+    
+</div>
+<div class = "column has-text-centered">
+
+<ul>
+<% for (var i = 0; i < burger.length; i++){%>
+<% if (burger[i].Devoured === false){%>
+<li>
+<button id = "devourit" data-id = "<%= burger[i].id %>" data-isdevoured = " <%= burger[i].Devoured %> " >Devour it!  </button>
+</li>
+<%}%>
+<%}%>
+</ul>
+
+
+</div>
+
+<div class = "column" id = "devouredBurgers">
+
+<ul class = "is-pulled-left">
+<% for (var i = 0; i < burger.length; i++){%>
+<% if (burger[i].Devoured === true){%>
+<li>
+
+<%= burger[i].burger_name %> 
+</li>
+<%}%>
+<%}%>
+</ul>
+<div class = "columns">
+<div class = "column">
+<ul class = "is-pulled-left">
+<% for (var i = 0; i < burger.length; i++){%>
+<% if (burger[i].Devoured === true){%>
+<li>
+
+<span class="icon">
+<i class="fas fa-times-circle"></i>
+</span>
+</li>
+<%}%>
+<%}%>
+</ul>
+
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</section>
+
+<section class = "section ">
+<!--action = "/api/burger"-->
+<form class = "field has-text-centered" action = "/api/burger" method = "POST">
+<label class="label">NEW BURGER NAME</label>
+  <div class="control has-text-centered">
+    <input class="input" type="text" name = "burger_name" style = "width : 25%" >
+  </div>
+  <br>
+  <div class="field ">
+  <div class="control has-text-centered">
+    <button class="button is-large" id = "addburger">ADD NEW BURGUER</button>
+  </div>
+</div>
+</form>
+
+
+
+</section>
+
+<% include partials/footer %>
