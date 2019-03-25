@@ -19,7 +19,7 @@ $(document).ready(function(){
         })
     });
     $("#addburger").on("click", function(e){
-        alert("clicked");
+       
         event.preventDefault();
         var newName = {
             burger_name : $(".input").val().trim()
