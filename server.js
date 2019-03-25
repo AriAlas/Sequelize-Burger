@@ -14,7 +14,9 @@ app.set("views", path.join(__dirname, "views"));
 
 
 //routes
+
 require("./routes/burgerRoutes")(app);
+
 
 db.sequelize.sync({force : false}).then(function(){
     app.listen(PORT, function(){
